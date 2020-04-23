@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+from decouple import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -40,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.flatpages',
     'movies',
+    'contact',
     'ckeditor',
     'ckeditor_uploader',
     'snowpenguin.django.recaptcha3',
@@ -202,9 +204,25 @@ CKEDITOR_CONFIGS = {
 }
 
 
-RECAPTCHA_PUBLIC_KEY = '6LfkIO0UAAAAAK2-q_moixZ9OamB_Een54qJoEVt'
-RECAPTCHA_PRIVATE_KEY = '6LfkIO0UAAAAALChN5BFbl94CCeQH-SpdwGIvYsD'
+RECAPTCHA_PUBLIC_KEY = config('RECAPTCHA_PUBLIC')
+RECAPTCHA_PRIVATE_KEY = config('RECAPTCHA_PRIVATE')
 RECAPTCHA_DEFAULT_ACTION = 'generic'
 RECAPTCHA_SCORE_THRESHOLD = 0.5
 
 SITE_ID = 1
+
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = config('ACCOUNT')
+EMAIL_HOST_PASSWORD = config('PASSWORD')
+
+REDIS_HOST = '0.0.0.0'
+REDIS_PORT = '6379'
+CELERY_BROKER_URL = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'
+CELERY_BROKER_TRANSPORT_OPTION = {'visibility_timeout': 3600}
+CELERY_RESULT_BROKER = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'

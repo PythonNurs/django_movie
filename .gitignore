@@ -3,6 +3,7 @@ send_sms/.env
 .vscode/
 .idea
 .vs/
+django_movie/.env
 my_venv/
 .env
 .env/
