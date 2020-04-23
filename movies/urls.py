@@ -1,10 +1,11 @@
 from django.urls import path
 from .views import MovieViews, MovieDetailView, AddReview, ActorDetailView, FilterMovie, JsonFilterMoviesView, \
-    AddRatingStar
+    AddRatingStar, Search
 
 urlpatterns = [
     path('', MovieViews.as_view(), name='movie_list'),
     path('filter/', FilterMovie.as_view(), name='filter_movie'),
+    path('search/', Search.as_view(), name='search_movie'),
     path('json-filter/', JsonFilterMoviesView.as_view(), name='json_filter'),
     path('add-rating/', AddRatingStar.as_view(), name='add_rating'),
     path('<slug:slug>/', MovieDetailView.as_view(), name='movie_detail'),
