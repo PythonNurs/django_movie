@@ -1,0 +1,8 @@
+[Unit]
+Description=gunicorn socket for djangomovie project
+
+[Socket]
+ListenStream=/run/gunicorn/djangomovie_socket
+
+[Install]
+WantedBy=sockets.targe
