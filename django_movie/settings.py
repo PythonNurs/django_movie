@@ -26,7 +26,7 @@ SECRET_KEY = 'tk)=fv52@lm273+6g7nink%b@pw9m@qldc2$ots8_h+xd0m53='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.it-academy.tk', '134.122.76.127']
 
 
 # Application definition
@@ -172,7 +172,7 @@ LOCALE_PATHS = (
 STATIC_URL = '/static/'
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = [STATIC_DIR]
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') 
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
