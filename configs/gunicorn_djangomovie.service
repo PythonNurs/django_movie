@@ -1,0 +1,25 @@
+[Unit]
+Description=gunicorn daemon for djangomovie project
+Requires=gunicorn_djangomovie.socket
+After=network.target
+
+[Service]
+PermissionsStartOnly=True
+User=muratGroup=www-data
+RuntimeDirectory=gunicorn
+RuntimeDirectoryMode=0775
+PIDFile=/run/gunicorn/pid
+WorkingDirectory=/home/​nursultan/django_prack
+ExecStart=​/home/murat/simpledjango/env/bin/gunicorn​ \
+--access-logfile ​ /home/nursultan/django_prack/logs/access.log​ \
+--error-logfile ​ /home/nursultan/django_prack/logs/error.log​ \
+--pid /run/gunicorn/pid \
+--env DJANGO_SETTINGS_MODULE=​ django_movie.settings \
+--workers 3 \
+--bind unix:/run/gunicorn/djangomovie_socket ​ django_movie.wsgi​ :application
+ExecReload=/bin/kill -s HUP $MAINPID
+ExecStop=/bin/kill -s TERM $MAINPID
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
