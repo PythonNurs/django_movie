@@ -26,7 +26,7 @@ SECRET_KEY = 'tk)=fv52@lm273+6g7nink%b@pw9m@qldc2$ots8_h+xd0m53='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.it-academy.tk', '134.122.76.127']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.it-academy.tk', '64.227.113.120']
 
 
 # Application definition

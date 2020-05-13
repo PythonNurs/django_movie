@@ -5,4 +5,4 @@
     ListenStream=/run/gunicorn/django_prack_socket
 
 [Install]
-    WantedBy=sockets.targe
+    WantedBy=sockets.target
